@@ -25,9 +25,9 @@ const SuggestedUsers = () => {
       </Flex>
 
       {/* All the suggesed user profiles */}
-      <SuggestedUser />
-      <SuggestedUser />
-      <SuggestedUser />
+      <SuggestedUser avatar="./img1.png" followers="200" username="sanish" />
+      <SuggestedUser avatar="./img2.png" followers="200" username="sanish" />
+      <SuggestedUser avatar="./img3.png" followers="200" username="sanish" />
       <Box fontSize={12} color={"gray.500"} mt={5} alignSelf={"start"}>
         © 2024 Built By{" "}
         <Link
