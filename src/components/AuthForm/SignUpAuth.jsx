@@ -1,0 +1,96 @@
+import { useState } from "react";
+import { InputGroup, Input, InputRightElement, Button } from "@chakra-ui/react";
+import { VscEye } from "react-icons/vsc";
+import { VscEyeClosed } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+
+const SignUpAuth = () => {
+  //TO toggle show and hide button for password field
+  const [show, setShow] = useState(false);
+  const handleClick = () => {
+    setShow(!show);
+  };
+
+  //to handle if sign up or login page
+  const [isLogin, setIsLogin] = useState(true);
+
+  //to navigate the pages
+  const navigate = useNavigate();
+
+  //function to handle auth form
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
+  const handleAuth = () => {
+    if (!inputs.email || !inputs.password) {
+      alert("please fill in the form.");
+      return;
+    }
+
+    navigate("/");
+  };
+  return (
+    <>
+      <Input
+        size={"sm"}
+        placeholder="Full Name"
+        fontSize={"medium"}
+        type="name"
+        value={inputs.fullName}
+        onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+      />
+      <Input
+        size={"sm"}
+        placeholder="Username"
+        fontSize={"medium"}
+        type="name"
+        value={inputs.userName}
+        onChange={(e) => setInputs({ ...inputs, userName: e.target.value })}
+      />
+      <Input
+        size={"sm"}
+        placeholder="Email"
+        fontSize={"medium"}
+        type="email"
+        value={inputs.email}
+        onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+      />
+      <InputGroup size="md">
+        <Input
+          size="sm"
+          pr="4.5rem"
+          type={show ? "text" : "password"}
+          placeholder="Enter password"
+          value={inputs.password}
+          onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+        />
+        <InputRightElement width="4.5rem" pl={6}>
+          <Button
+            h="1.75rem"
+            size="sm"
+            onClick={handleClick}
+            bg={"transparent"}
+            px={0}
+          >
+            {show ? <VscEye /> : <VscEyeClosed />}
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+
+      <Button
+        w={"full"}
+        colorScheme={"blue"}
+        size={"sm"}
+        fontSize={14}
+        onClick={handleAuth}
+      >
+        Sign Up
+      </Button>
+    </>
+  );
+};
+
+export default SignUpAuth;
