@@ -24,7 +24,7 @@ const HomePage = () => {
             alignItems={"center"}
             marginX={"auto"}
           >
-            <Stories />
+            {/* <Stories /> */}
           </Box>
           <FeedPosts />
         </Box>
